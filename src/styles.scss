@@ -1,0 +1,39 @@
+// Import Bootstrap variables
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+// Custom variables
+$body-bg: #f8f9fa;
+$body-color: #212529;
+$text-muted: #6c757d;
+$primary: #007bff;
+$link-color: $primary;
+$link-hover-color: darken($primary, 10%);
+$card-bg: #ffffff;
+$card-border-radius: 0.5rem;
+$btn-primary-bg: #007bff;
+$btn-outline-secondary-color: #6c757d;
+$box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+$card-border-color: rgba(0, 0, 0, 0.125);
+$badge-bg: #28a745;
+$badge-color: #ffffff;
+$input-bg: #ffffff;
+$input-border-color: #ced4da;
+$input-border-radius: 0.25rem;
+$danger: #dc3545;
+
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/brands";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/solid";
+
+// Import Bootstrap to apply the custom variables
+@import "bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000");
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: $body-bg;
+  color: $body-color;
+}

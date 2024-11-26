@@ -1,0 +1,19 @@
+/* Estilos personalizados para las tarjetas del dashboard */
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-weight: 600;
+  color: #6c757d; /* Tono gris para el título */
+}
+
+.card-text {
+  font-weight: bold;
+  color: #212529; /* Tono oscuro para el contenido */
+}
+
+.shadow-sm {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

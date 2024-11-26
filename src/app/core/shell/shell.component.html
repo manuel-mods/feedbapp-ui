@@ -1,0 +1,86 @@
+<div class="d-flex">
+  <!-- Sidebar -->
+  <nav class="sidebar bg-light p-3" style="z-index: 999">
+    <div class="d-flex align-items-center mb-2">
+      <h3 class="fw-bold">FeedbApp</h3>
+    </div>
+
+    <ul class="nav flex-column nav-menu gap-2">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          routerLink="/dashboard"
+          [routerLinkActiveOptions]="{ exact: true }">
+          <span class="fa fa-home"></span>
+          Inicio
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/feedback/history">
+          <span class="fa fa-calendar"></span>
+          Historial de Feedback
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/feedback/profile">
+          <span class="fa fa-list"></span>
+          Perfil Feedback
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/feedback/config">
+          <span class="fa fa-users"></span>
+          Configuración
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/login">
+          <span class="fa fa-user"></span>
+          Cerrar Sesión
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main content -->
+  <div class="w-100 bg-gray bg-gradient">
+    <!-- Header -->
+    <header
+      class="d-flex justify-content-end align-items-center p-3 border-bottom bg-primary text-white">
+      <!-- <input type="text" class="form-control w-50 me-3" placeholder="Buscar" /> -->
+      <div class="d-flex align-items-center">
+        <a href="javascript:void(0)" class="me-3 text-white position-relative">
+          <i class="fas fa-bell"></i>
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            6
+          </span>
+        </a>
+        <div class="dropdown">
+          <a
+            href="javascript:void(0)"
+            class="text-white text-decoration-none"
+            id="dropdownUser"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <span class="ms-2">
+              Manuel Ignacio
+              <i class="fas fa-caret-square-o-down ms-2"></i>
+            </span>
+            <img
+              src="https://randomuser.me/api/portraits/lego/1.jpg"
+              alt="Avatar"
+              class="rounded-circle"
+              width="30" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Router Outlet -->
+    <main class="p-3">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

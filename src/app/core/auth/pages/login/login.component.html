@@ -1,0 +1,91 @@
+<div
+  class="d-flex flex-column align-items-center px-3 bg-primary vh-100 justify-content-center"
+>
+  <!-- Logo Section -->
+  <div class="card d-flex align-items-center p-3 shadow-sm">
+    <div class="my-3">
+      <img
+        src="https://www.mods.cl/propuestas/feedbapp/images/feedbapp-logo.png"
+        alt="Logo App"
+        class="img-fluid"
+        style="width: 200px"
+      />
+      <!-- <h1>Notifica</h1> -->
+    </div>
+    <!-- Title Section -->
+    <div class="text-center mb-4 mx-5 px-5">
+      <h3 class="fw-bold">Bienvenido 👋</h3>
+      <p class="text-secondary">
+        ¿No tienes cuenta? ¡Regístrate gratis y únete a Feedbapp!
+      </p>
+    </div>
+    <!-- Google Login Button Section -->
+    <div class="mb-3">
+      <button
+        class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center"
+        style="max-width: 400px"
+      >
+        <i
+          class="fab fa-google"
+          style="width: 20px; height: 20px; margin-right: 10px"
+        ></i>
+        Iniciar con Google
+      </button>
+    </div>
+    <!-- Divider Section -->
+    <div class="w-100 text-center text-secondary mb-3" style="max-width: 400px">
+      <hr class="my-4" />
+      <span>O si prefieres ingresa con tu correo y contraseña</span>
+      <hr class="my-4" />
+    </div>
+    <!-- Email and Password Input Section -->
+    <div class="mb-3 w-100" style="max-width: 400px">
+      <form [formGroup]="loginForm">
+        <input
+          type="email"
+          class="form-control mb-3"
+          placeholder="Correo"
+          formControlName="email"
+          aria-label="Correo"
+        />
+        <div class="input-group">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            formControlName="password"
+            placeholder="Contraseña"
+            aria-label="Contraseña"
+          />
+          <span class="input-group-text" (click)="showPassword = !showPassword">
+            @if (showPassword) {
+            <i class="fa fa-eye"></i>
+            } @else {
+            <i class="fa fa-eye-slash"></i>
+            }
+          </span>
+        </div>
+      </form>
+    </div>
+    <!-- Login Button Section -->
+    <div class="w-100" style="max-width: 400px">
+      <button
+        class="btn w-100 btn-primary"
+        [disabled]="loginForm.invalid"
+        (click)="login()"
+      >
+        Ingresar
+      </button>
+    </div>
+    <div class="mt-2 w-100" style="max-width: 400px">
+      <button class="btn w-100 btn-outline-primary" (click)="register()">
+        Registrarme
+      </button>
+    </div>
+    <!-- Register Link Section -->
+    <div class="w-100 text-center" style="max-width: 400px">
+      <button class="btn w-100" routerLink="reset">
+        <a class="text-decoration-none">¿Olvidaste tu contraseña?</a>
+      </button>
+    </div>
+  </div>
+</div>

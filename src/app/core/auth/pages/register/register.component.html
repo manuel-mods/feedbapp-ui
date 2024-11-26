@@ -1,0 +1,90 @@
+<div
+  class="vh-100 d-flex justify-content-center align-items-center bg-primary bg-gradient"
+>
+  <div
+    class="card d-flex align-items-center p-5 shadow-lg col-12 col-md-6 col-lg-4 rounded-3"
+  >
+    <!-- Logo and Title Section -->
+    <div class="mb-4 text-center">
+      <h1 class="text-primary fw-bold">Feedbapp</h1>
+      <p class="text-secondary fs-4">Crea una cuenta</p>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="mb-4 w-100" style="max-width: 400px">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <input
+          type="email"
+          class="form-control mb-3"
+          placeholder="Correo"
+          formControlName="email"
+          aria-label="Correo"
+        />
+        <div class="input-group mb-3">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            (input)="checkPasswordRequirements()"
+            placeholder="Contraseña"
+            formControlName="password"
+            aria-label="Contraseña"
+          />
+          <button
+            type="button"
+            class="input-group-text"
+            (click)="togglePassword()"
+            style="cursor: pointer"
+          >
+            <i [ngClass]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+          </button>
+        </div>
+        <!-- Password Requirements -->
+        <ul id="passwordRequirements" class="text-muted small">
+          <li
+            [class.valid]="requirements.minLength"
+            [class.invalid]="!requirements.minLength"
+          >
+            Mínimo 8 caracteres
+          </li>
+          <li
+            [class.valid]="requirements.maxLength"
+            [class.invalid]="!requirements.maxLength"
+          >
+            Máximo 16 caracteres
+          </li>
+          <li
+            [class.valid]="requirements.hasNumber"
+            [class.invalid]="!requirements.hasNumber"
+          >
+            Al menos un número
+          </li>
+          <li
+            [class.valid]="requirements.hasSpecialChar"
+            [class.invalid]="!requirements.hasSpecialChar"
+          >
+            Al menos un carácter especial
+          </li>
+          <li
+            [class.valid]="requirements.hasLetter"
+            [class.invalid]="!requirements.hasLetter"
+          >
+            Al menos una letra
+          </li>
+        </ul>
+        <button
+          type="submit"
+          class="btn btn-primary w-100 rounded-pill"
+          [disabled]="registerForm.invalid || !allRequirementsValid()"
+        >
+          Registrarse
+        </button>
+        <a
+          routerLink="/auth/login"
+          class="text-center mt-3 d-block text-decoration-none"
+        >
+          ¿Ya tienes cuenta? Inicia sesión
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
