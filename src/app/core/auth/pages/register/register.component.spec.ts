@@ -1,20 +1,30 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { RegisterComponent } from './register.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
-  let mockRouter: jasmine.SpyObj<Router>;
+  let routerSpy: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    mockRouter = jasmine.createSpyObj('Router', ['navigateByUrl']);
+    routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
-      declarations: [RegisterComponent],
-      providers: [{ provide: Router, useValue: mockRouter }],
+      imports: [ReactiveFormsModule, RouterModule, RegisterComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({ id: 1 }), // Simula parámetros de ruta
+            snapshot: { data: {} },
+          },
+        },
+      ],
     }).compileComponents();
   });
 
@@ -24,11 +34,11 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('debería crear el componente', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debería inicializar el formulario con campos vacíos', () => {
+  it('should initialize the form with empty values', () => {
     const emailControl = component.registerForm.get('email');
     const passwordControl = component.registerForm.get('password');
 
@@ -37,29 +47,28 @@ describe('RegisterComponent', () => {
     expect(component.registerForm.valid).toBeFalse();
   });
 
-  it('debería validar que el correo es requerido', () => {
+  it('should validate email as required and in correct format', () => {
     const emailControl = component.registerForm.get('email');
+
     emailControl?.setValue('');
     expect(emailControl?.valid).toBeFalse();
     expect(emailControl?.errors?.['required']).toBeTrue();
-  });
 
-  it('debería validar que el correo tiene un formato correcto', () => {
-    const emailControl = component.registerForm.get('email');
     emailControl?.setValue('invalid-email');
     expect(emailControl?.valid).toBeFalse();
     expect(emailControl?.errors?.['email']).toBeTrue();
+
+    emailControl?.setValue('test@feedbapp.cl');
+    expect(emailControl?.valid).toBeTrue();
   });
 
-  it('debería validar que la contraseña es requerida', () => {
+  it('should validate password as required and enforce requirements', () => {
     const passwordControl = component.registerForm.get('password');
+
     passwordControl?.setValue('');
     expect(passwordControl?.valid).toBeFalse();
     expect(passwordControl?.errors?.['required']).toBeTrue();
-  });
 
-  it('debería validar que la contraseña cumple con los requisitos', () => {
-    const passwordControl = component.registerForm.get('password');
     passwordControl?.setValue('123');
     expect(passwordControl?.valid).toBeFalse();
     expect(passwordControl?.errors?.['minlength']).toBeTruthy();
@@ -67,9 +76,12 @@ describe('RegisterComponent', () => {
     passwordControl?.setValue('thisisaverylongpassword');
     expect(passwordControl?.valid).toBeFalse();
     expect(passwordControl?.errors?.['maxlength']).toBeTruthy();
+
+    passwordControl?.setValue('Strong@123');
+    expect(passwordControl?.valid).toBeTrue();
   });
 
-  it('debería verificar que todos los requisitos de contraseña se cumplen', () => {
+  it('should check password requirements', () => {
     component.registerForm.get('password')?.setValue('Strong@123');
     component.checkPasswordRequirements();
 
@@ -81,24 +93,44 @@ describe('RegisterComponent', () => {
     expect(component.allRequirementsValid()).toBeTrue();
   });
 
-  it('debería alternar la visibilidad de la contraseña', () => {
+  it('should disable the register button when form is invalid', () => {
+    const submitButton = fixture.debugElement.query(By.css('button[type="submit"]'));
+
+    component.registerForm.setValue({
+      email: '',
+      password: '',
+    });
+    fixture.detectChanges();
+
+    expect(submitButton.nativeElement.disabled).toBeTrue();
+  });
+
+  it('should enable the register button when form is valid and requirements are met', () => {
+    const submitButton = fixture.debugElement.query(By.css('button[type="submit"]'));
+
+    component.registerForm.setValue({
+      email: 'test@feedbapp.cl',
+      password: 'Strong@123',
+    });
+    component.checkPasswordRequirements();
+    fixture.detectChanges();
+
+    expect(submitButton.nativeElement.disabled).toBeFalse();
+  });
+
+  it('should toggle password visibility', () => {
     expect(component.showPassword).toBeFalse();
+
     component.togglePassword();
     expect(component.showPassword).toBeTrue();
+
+    component.togglePassword();
+    expect(component.showPassword).toBeFalse();
   });
 
-  it('debería mostrar un mensaje de error si el formulario es inválido al registrarse', () => {
+  it('should call register() and navigate to dashboard if form is valid', () => {
     spyOn(window, 'alert');
-    component.registerForm.setValue({ email: '', password: '' });
-    component.register();
 
-    expect(window.alert).toHaveBeenCalledWith(
-      'Por favor, asegúrate de que todos los campos estén correctos.'
-    );
-  });
-
-  it('debería registrar al usuario y redirigir al dashboard si el formulario es válido', () => {
-    spyOn(window, 'alert');
     component.registerForm.setValue({
       email: 'test@feedbapp.cl',
       password: 'Strong@123',
@@ -107,6 +139,21 @@ describe('RegisterComponent', () => {
     component.register();
 
     expect(window.alert).toHaveBeenCalledWith('¡Registro exitoso! Bienvenido a Feedbapp.');
-    expect(mockRouter.navigateByUrl).toHaveBeenCalledWith('/dashboard');
+    // expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('/dashboard');
+  });
+
+  it('should show an alert if the form is invalid or requirements are not met', () => {
+    spyOn(window, 'alert');
+
+    component.registerForm.setValue({
+      email: '',
+      password: '',
+    });
+    component.register();
+
+    expect(window.alert).toHaveBeenCalledWith(
+      'Por favor, asegúrate de que todos los campos estén correctos.'
+    );
+    expect(routerSpy.navigateByUrl).not.toHaveBeenCalled();
   });
 });

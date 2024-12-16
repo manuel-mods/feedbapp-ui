@@ -58,8 +58,10 @@
 
     <!-- Botón de Guardar Cambios -->
     <div class="">
-      <button type="submit" class="btn btn-primary" [disabled]="configForm.invalid">
-        Guardar Cambios
+      <button type="submit" class="btn btn-primary" [disabled]="configForm.invalid || loading">
+        Guardar Cambios @if(loading) {
+        <i class="fa fa-spin fa-spinner"></i>
+        }
       </button>
     </div>
   </form>
