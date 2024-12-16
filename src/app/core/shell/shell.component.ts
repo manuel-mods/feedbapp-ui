@@ -26,5 +26,15 @@ export class ShellComponent {
       console.log('newTitle', newTitle);
       this.title = newTitle;
     });
+
+    // if route change hidden menu
+    this._router.events.subscribe((val) => {
+      this.menuOpen = false;
+    });
+  }
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 }

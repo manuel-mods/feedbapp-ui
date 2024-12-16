@@ -22,12 +22,7 @@
 .sidebar .nav-link:hover {
   // background-color: #f1f3f5; /* Fondo gris claro al pasar el mouse */
   // background-color: #007bff; /* Fondo azul para el enlace activo */
-  background-color: rgba(
-    0,
-    123,
-    255,
-    0.7
-  ); /* Fondo azul claro al pasar el mouse */
+  background-color: rgba(0, 123, 255, 0.7); /* Fondo azul claro al pasar el mouse */
   color: white;
 }
 
@@ -96,4 +91,34 @@ header .badge {
   position: absolute;
   top: -5px;
   right: -10px; /* Ajuste de posición para centrar mejor el badge */
+}
+
+.sidebar {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  overflow-y: auto;
+  width: 250px;
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  @media (min-width: 768px) {
+    transform: translateX(0); // Siempre visible en pantallas grandes
+    position: relative;
+  }
+}
+
+.w-100 {
+  margin-left: 0;
+  transition: margin-left 0.3s ease-in-out;
+
+  @media (min-width: 768px) {
+    margin-left: 250px; // Deja espacio para el sidebar en pantallas grandes
+  }
 }
