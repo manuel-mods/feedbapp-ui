@@ -1,6 +1,7 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FeedbackService } from '../../../../core/services/order.service';
 
 /**
  * Componente `FormComponent`
@@ -70,14 +71,32 @@ export class FormComponent {
    * Si el formulario es válido, se imprime en la consola y se reinicia el formulario.
    * Si no es válido, se muestra una alerta.
    */
+  _feedbacks: FeedbackService = inject(FeedbackService);
+
   submitFeedback(): void {
     if (this.feedbackForm.valid) {
       const feedback = this.feedbackForm.value;
-      console.log('Feedback enviado:', feedback);
-      alert('¡Gracias por tu feedback!');
-      // Lógica para enviar feedback al servidor
-      this.feedbackForm.reset({ rating: 0, comment: '' });
-      this.selectedRating = 0;
+      const feedbackData = {
+        userId: localStorage.getItem('user'),
+        content: feedback.comment,
+        rating: feedback.rating,
+        givenBy: 'anon',
+      };
+      // Llamar al servicio para enviar el feedback
+      this._feedbacks.createFeedback(feedbackData).subscribe({
+        next: (response) => {
+          console.log('Feedback enviado:', response);
+          alert('¡Gracias por tu feedback!');
+
+          // Resetear el formulario después del envío exitoso
+          this.feedbackForm.reset({ rating: 0, comment: '' });
+          this.selectedRating = 0;
+        },
+        error: (err) => {
+          console.error('Error enviando feedback:', err);
+          alert('Ocurrió un error al enviar tu feedback. Por favor, inténtalo nuevamente.');
+        },
+      });
     } else {
       alert('Por favor selecciona una puntuación.');
     }

@@ -101,15 +101,18 @@ export class LoginComponent implements OnInit {
    * dashboard de la aplicación.
    */
   async login() {
-    try {
-      if (
-        this.loginForm.value.email === 'demo@feedbapp.cl' &&
-        this.loginForm.value.password === '123123'
-      ) {
-        this.router.navigateByUrl('/dashboard');
-      }
-    } catch (error: any) {
-      console.error(error);
-    }
+    // try {
+    //   if (
+    //     this.loginForm.value.email === 'demo@feedbapp.cl' &&
+    //     this.loginForm.value.password === '123123'
+    //   ) {
+    // save email in localstorage as user
+    localStorage.setItem('user', this.loginForm.value.email);
+    // navigate to dashboard
+    this.router.navigateByUrl('/dashboard');
+    //   }
+    // } catch (error: any) {
+    //   console.error(error);
+    // }
   }
 }

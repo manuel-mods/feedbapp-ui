@@ -18,22 +18,22 @@
             <tr>
               <td>
                 <div class="d-flex align-items-center">
-                  <img
+                  <!-- <img
                     [src]="feedback.avatar"
                     alt="Avatar"
                     class="rounded-circle me-2"
                     width="40"
-                    height="40" />
-                  <span>{{ feedback.user }}</span>
+                    height="40" /> -->
+                  <span>{{ feedback.givenBy }}</span>
                 </div>
               </td>
-              <td>{{ feedback.comment }}</td>
+              <td>{{ feedback.content }}</td>
               <td>
                 <div class="feedback-rating">
                   <span class="ms-2">{{ feedback.rating }}.0</span>
                 </div>
               </td>
-              <td>{{ feedback.date }}</td>
+              <td>{{ feedback.createdAt }}</td>
               <td>
                 <button class="btn btn-outline-danger btn-sm" (click)="reportFeedback(feedback.id)">
                   Reportar Feedback

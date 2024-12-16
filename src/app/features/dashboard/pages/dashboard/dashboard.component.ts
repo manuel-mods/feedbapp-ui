@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  feedbacksGiven: number = 23;
-  feedbacksReceived: number = 15;
-  averageScore: number = 4.5;
-  followersCount: number = 100;
+  feedbacksGiven: number = 0;
+  feedbacksReceived: number = 0;
+  averageScore: number = 0;
+  followersCount: number = 0;
 }
