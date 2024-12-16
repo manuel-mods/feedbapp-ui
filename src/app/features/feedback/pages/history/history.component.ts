@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { FeedbackService } from '../../../../core/services/order.service';
-import { firstValueFrom } from 'rxjs';
+import { FeedbackService } from '../../../../core/services/feedback.service';
+import { first, firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-history',
@@ -12,6 +12,7 @@ import { firstValueFrom } from 'rxjs';
 export class HistoryComponent {
   _feedbacks: FeedbackService = inject(FeedbackService);
   feedbackList: any = [];
+  loading = true;
   async ngOnInit() {
     try {
       const user = localStorage.getItem('user');
@@ -19,9 +20,19 @@ export class HistoryComponent {
       this.feedbackList = data;
     } catch (error) {
       console.error(error);
+    } finally {
+      this.loading = false;
     }
   }
-  reportFeedback(id: number) {
-    alert(`Feedback con ID ${id} reportado.`);
+  async reportFeedback(id: number) {
+    const conf = confirm(`¿Estás seguro de reportar el feedback con ID ${id}?`);
+    if (id) {
+      try {
+        await firstValueFrom(this._feedbacks.deleteFeedback(id));
+        this.ngOnInit();
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }
 }

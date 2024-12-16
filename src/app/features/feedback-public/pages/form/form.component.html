@@ -34,10 +34,10 @@
           <div id="rating" class="d-flex">
             @for (star of stars; track $index) {
             <i
-              class="fas"
+              class="fas fa-star"
               [ngClass]="{
-                'fa-star text-warning': star <= selectedRating,
-                'fa-star text-muted': star > selectedRating
+                'text-warning': star <= selectedRating,
+                'text-muted': star > selectedRating
               }"
               (click)="setStar(star)"></i>
             }
@@ -46,7 +46,7 @@
 
         <!-- Caja de Texto para el Comentario -->
         <div class="mb-4">
-          <label for="feedbackComment" class="form-label">Comentario (opcional)</label>
+          <label for="feedbackComment" class="form-label">Comentario</label>
           <textarea
             class="form-control"
             formControlName="comment"

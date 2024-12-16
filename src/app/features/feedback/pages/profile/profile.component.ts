@@ -1,36 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { FeedbackService } from '../../../../core/services/feedback.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent {
+  _feedbacks: FeedbackService = inject(FeedbackService);
+  feedbackList: any = [];
+
   user = {
     avatar: 'https://randomuser.me/api/portraits/men/10.jpg',
-    name: 'Juan Pérez',
-    email: 'demo@feedbapp.cl',
-    username: '@juan.perez',
+    name: '',
+    email: '',
     rating: 4,
     memberSince: '2024',
-    bio: 'Me gusta la tecnología y la música. Soy fanático de los videojuegos y me encanta la comida italiana. 🎮🍕',
+    description: '',
   };
+  loading = true;
+  async ngOnInit() {
+    this.user.email = localStorage.getItem('user') || 'User';
+    try {
+      const user = localStorage.getItem('user');
+      const data = await firstValueFrom(this._feedbacks.getFeedbacks(user));
+      const userData = await firstValueFrom(this._feedbacks.getUser(user));
+      this.user = { ...this.user, ...userData };
 
-  feedbackList = [
-    {
-      id: 1,
-      user: 'Carlos Martínez',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-      comment:
-        'La calidad del producto superó mis expectativas. Excelente atención y rapidez en la entrega.',
-      rating: 5,
-      date: '02/11/2024',
-    },
-    // ... más feedbacks
-  ];
+      this.feedbackList = data;
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.loading = false;
+    }
+  }
 
   reportFeedback(id: number) {
     alert(`Feedback con ID ${id} reportado.`);

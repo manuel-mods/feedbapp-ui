@@ -1,7 +1,9 @@
 import { NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { FeedbackService } from '../../../../core/services/order.service';
+import { FeedbackService } from '../../../../core/services/feedback.service';
+import { firstValueFrom } from 'rxjs';
+import { ActivatedRoute, Route } from '@angular/router';
 
 /**
  * Componente `FormComponent`
@@ -18,16 +20,6 @@ import { FeedbackService } from '../../../../core/services/order.service';
   styleUrl: './form.component.scss', // Ruta del archivo de estilos
 })
 export class FormComponent {
-  /**
-   * Información del usuario que recibirá el feedback.
-   */
-  user = {
-    avatar: 'https://randomuser.me/api/portraits/men/10.jpg', // URL del avatar del usuario
-    name: 'Juan Pérez', // Nombre del usuario
-    memberSince: '2024', // Año de registro del usuario
-    bio: 'Me gusta la tecnología y la música. Soy fanático de los videojuegos y me encanta la comida italiana. 🎮🍕', // Descripción del usuario
-  };
-
   /**
    * Lista de estrellas para seleccionar puntuación (1 a 5).
    */
@@ -52,7 +44,7 @@ export class FormComponent {
   constructor(private fb: FormBuilder) {
     this.feedbackForm = this.fb.group({
       rating: [this.selectedRating, [Validators.required, Validators.min(1)]],
-      comment: [''],
+      comment: ['', [Validators.maxLength(500), Validators.required]],
     });
   }
 
@@ -99,6 +91,37 @@ export class FormComponent {
       });
     } else {
       alert('Por favor selecciona una puntuación.');
+    }
+  }
+  private route = inject(ActivatedRoute);
+  private feedbackService = inject(FeedbackService);
+
+  user: any = {
+    avatar: 'https://randomuser.me/api/portraits/men/10.jpg',
+    name: '',
+    email: '',
+    rating: 4,
+    memberSince: '2024',
+    bio: '',
+  };
+
+  feedbackList: any[] = [];
+  loading = true;
+
+  async ngOnInit() {
+    const userId = this.route.snapshot.paramMap.get('id') || '';
+    try {
+      const [userData, feedbackData] = await Promise.all([
+        firstValueFrom(this.feedbackService.getUser(userId)),
+        firstValueFrom(this.feedbackService.getFeedbacks(userId)),
+      ]);
+
+      this.user = { ...this.user, ...userData };
+      this.feedbackList = feedbackData;
+    } catch (error) {
+      console.error('Error fetching user or feedback data:', error);
+    } finally {
+      this.loading = false;
     }
   }
 }

@@ -24,7 +24,7 @@ export class FeedbackService {
   }
 
   // Delete feedback by ID
-  deleteFeedback(id: string): Observable<any> {
+  deleteFeedback(id: any): Observable<any> {
     return this.http.delete<any>('http://localhost:8080/api/feedback/' + id);
   }
 
@@ -39,5 +39,9 @@ export class FeedbackService {
   // Create or update user
   createOrUpdateUser(user: any): Observable<any> {
     return this.http.post<any>('http://localhost:8080/api/feedback/user', user);
+  }
+
+  getUser(user: any): Observable<any> {
+    return this.http.get<any>('http://localhost:8080/api/feedback/user/' + user);
   }
 }

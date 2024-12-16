@@ -8,7 +8,12 @@
 
     <main class="p-3">
       <div class="container mt-4">
-        <div class="row">
+        <div *ngIf="loading" class="text-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+        <div *ngIf="!loading" class="row">
           <div class="col-12">
             <div class="d-flex align-items-center mb-3">
               <img
@@ -21,8 +26,7 @@
                 <div class="float-end fw-bold small">
                   Puntuación ({{ user.rating }})
                   <div>
-                    @for(star of [1, 2, 3, 4, 5]; track $index) {
-                    <ng-container>
+                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                       <i
                         class="fas"
                         [ngClass]="{
@@ -30,7 +34,6 @@
                           'fa-star text-muted': star > user.rating
                         }"></i>
                     </ng-container>
-                    }
                   </div>
                 </div>
 
@@ -38,7 +41,7 @@
                 <small class="text-muted">Miembro desde {{ user.memberSince }}</small>
                 <p>{{ user.bio }}</p>
                 <div>
-                  <a routerLink="/public/form" class="btn btn-primary me-2">
+                  <a [routerLink]="'/public/form/' + user.email" class="btn btn-primary me-2">
                     Dale un feedback
                     <i class="fa fa-rocket"></i>
                   </a>
@@ -52,48 +55,49 @@
             <!-- Previsualización del Perfil -->
             <div class="card shadow-sm">
               <div class="card-body">
-                <h5 class="card-title text-center mb-4">Previsualización de mi Perfil</h5>
-
+                <h5 class="card-title text-center mb-4">Feeds recibidos</h5>
+                @if(feedbackList.length === 0) {
+                <div class="text-center">
+                  <p class="text-muted">No hay feedbacks para mostrar</p>
+                </div>
+                }
                 <div class="row">
-                  @for(feedback of feedbackList; track $index) {
-                  <div class="col-12 col-md-6 col-lg-4 mb-3">
-                    <div class="card shadow-sm">
-                      <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="d-flex align-items-center">
-                            <img
-                              [src]="feedback.avatar"
-                              alt="Avatar"
-                              class="rounded-circle me-3"
-                              width="50"
-                              height="50" />
-                            <div>
-                              <h5 class="mb-0">{{ feedback.user }}</h5>
-                              <small class="text-muted">{{ feedback.date }}</small>
+                  <ng-container *ngFor="let feedback of feedbackList; let i = index">
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                      <div class="card shadow-sm">
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                              <!-- <img
+                                [src]="feedback.avatar"
+                                alt="Avatar"
+                                class="rounded-circle me-3"
+                                width="50"
+                                height="50" /> -->
+                              <div>
+                                <h5 class="mb-0">{{ feedback.givenBy }}</h5>
+                                <small class="text-muted">{{ feedback.createdAt }}</small>
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                        <p class="mt-3">{{ feedback.comment }}</p>
+                          <p class="mt-3">{{ feedback.content }}</p>
 
-                        <div class="feedback-rating">
-                          @for(star of [1, 2, 3, 4, 5]; track $index) {
-                          <ng-container>
-                            <i
-                              class="fas"
-                              [ngClass]="{
-                                'fa-star text-warning': star <= feedback.rating,
-                                'fa-star text-muted': star > feedback.rating
-                              }"></i>
-                          </ng-container>
-                          }
-
-                          <span class="ms-2">{{ feedback.rating }}.0</span>
+                          <div class="feedback-rating">
+                            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                              <i
+                                class="fas"
+                                [ngClass]="{
+                                  'fa-star text-warning': star <= feedback.rating,
+                                  'fa-star text-muted': star > feedback.rating
+                                }"></i>
+                            </ng-container>
+                            <span class="ms-2">{{ feedback.rating }}.0</span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  }
+                  </ng-container>
                 </div>
               </div>
             </div>

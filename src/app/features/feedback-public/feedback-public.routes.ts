@@ -7,11 +7,11 @@ export const routes: Routes = [
     // component: ShellComponent,
     children: [
       {
-        path: 'form',
+        path: 'form/:id',
         loadComponent: () => import('./pages/form/form.component').then((c) => c.FormComponent),
       },
       {
-        path: 'profile',
+        path: 'profile/:id',
         loadComponent: () =>
           import('./pages/profile/profile.component').then((c) => c.ProfileComponent),
       },

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FeedbackService } from '../../../../core/services/feedback.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-config',
@@ -13,21 +15,33 @@ export class ConfigComponent {
 
   constructor(private fb: FormBuilder) {
     this.configForm = this.fb.group({
-      name: ['Juan Pérez', [Validators.required, Validators.minLength(3)]],
-      username: ['juan.perez', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.]+$')]],
-      description: [
-        'Apasionado de la tecnología y siempre en busca de mejorar mis productos gracias al feedback de mis clientes.',
-        Validators.required,
-      ],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', Validators.required],
       acceptAnonymousFeedback: [false],
       showScore: [true],
       acceptFollowers: [false],
     });
   }
+  _feedbacks: FeedbackService = inject(FeedbackService);
 
-  saveChanges() {
+  ngOnInit() {
+    const user = localStorage.getItem('user');
+    if (user) {
+      firstValueFrom(this._feedbacks.getUser(user)).then((data) => {
+        this.configForm.patchValue(data);
+      });
+    }
+  }
+  async saveChanges() {
     if (this.configForm.valid) {
-      console.log('Configuración guardada:', this.configForm.value);
+      const user = localStorage.getItem('user');
+      try {
+        await firstValueFrom(
+          this._feedbacks.createOrUpdateUser({ email: user, ...this.configForm.value })
+        );
+      } catch (error) {
+        console.error(error);
+      }
       alert('Cambios guardados exitosamente.');
     } else {
       alert('Por favor, revisa los campos antes de guardar.');
