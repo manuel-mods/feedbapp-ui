@@ -116,7 +116,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/features/feedback/pages/profile/profile.component.ts</code>
+    <code>src/app/features/feedback-public/pages/profile/profile.component.ts</code>
 </p>
 
 
@@ -153,7 +153,9 @@
             <tr>
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
+                            <code>NgClass</code>
                             <code>RouterLink</code>
+                            <code>CommonModule</code>
                 </td>
             </tr>
 
@@ -196,6 +198,17 @@
                                 <a href="#feedbackList" >feedbackList</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#feedbackService" >feedbackService</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#route" >route</a>
+                            </li>
+                            <li>
                                 <a href="#user" >user</a>
                             </li>
                         </ul>
@@ -211,7 +224,8 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#reportFeedback" >reportFeedback</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                         </ul>
                     </td>
@@ -239,24 +253,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="reportFeedback"></a>
+                    <a name="ngOnInit"></a>
                     <span class="name">
-                        <span ><b>reportFeedback</b></span>
-                        <a href="#reportFeedback"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Async</span>
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>reportFeedback(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/features/feedback/pages/profile/profile.component.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="30"
+                                    class="link-to-prism">src/app/features/feedback-public/pages/profile/profile.component.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -264,40 +280,10 @@
             <tr>
                 <td class="col-md-4">
 
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>id</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
-                            <div class="io-description">
-                                
-                            </div>
                 </td>
             </tr>
         </tbody>
@@ -321,29 +307,95 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>[]</code>
+                        <i>Type : </i>    <code>any[]</code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>[
-    {
-      id: 1,
-      user: &#x27;Carlos Martínez&#x27;,
-      avatar: &#x27;https://randomuser.me/api/portraits/men/32.jpg&#x27;,
-      comment:
-        &#x27;La calidad del producto superó mis expectativas. Excelente atención y rapidez en la entrega.&#x27;,
-      rating: 5,
-      date: &#x27;02/11/2024&#x27;,
-    },
-    // ... más feedbacks
-  ]</code>
+                        <i>Default value : </i><code>[]</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/features/feedback/pages/profile/profile.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/features/feedback-public/pages/profile/profile.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="feedbackService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>feedbackService</b></span>
+                        <a href="#feedbackService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(FeedbackService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/features/feedback-public/pages/profile/profile.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/features/feedback-public/pages/profile/profile.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="route"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>route</b></span>
+                        <a href="#route"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ActivatedRoute)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/features/feedback-public/pages/profile/profile.component.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -363,7 +415,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </td>
                 </tr>
@@ -371,18 +423,17 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
     avatar: &#x27;https://randomuser.me/api/portraits/men/10.jpg&#x27;,
-    name: &#x27;Juan Pérez&#x27;,
-    email: &#x27;demo@feedbapp.cl&#x27;,
-    username: &#x27;@juan.perez&#x27;,
+    name: &#x27;&#x27;,
+    email: &#x27;&#x27;,
     rating: 4,
     memberSince: &#x27;2024&#x27;,
-    bio: &#x27;Me gusta la tecnología y la música. Soy fanático de los videojuegos y me encanta la comida italiana. 🎮🍕&#x27;,
+    bio: &#x27;&#x27;,
   }</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/features/feedback/pages/profile/profile.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/features/feedback-public/pages/profile/profile.component.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -395,139 +446,171 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { RouterLink } from &#x27;@angular/router&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule, NgClass } from &#x27;@angular/common&#x27;;
+import { Component, inject } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, RouterLink } from &#x27;@angular/router&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
+import { FeedbackService } from &#x27;../../../../core/services/feedback.service&#x27;;
 
 @Component({
   selector: &#x27;app-profile&#x27;,
   standalone: true,
-  imports: [RouterLink],
+  imports: [NgClass, RouterLink, CommonModule],
   templateUrl: &#x27;./profile.component.html&#x27;,
   styleUrl: &#x27;./profile.component.scss&#x27;,
 })
 export class ProfileComponent {
-  user &#x3D; {
+  private route &#x3D; inject(ActivatedRoute);
+  private feedbackService &#x3D; inject(FeedbackService);
+
+  user: any &#x3D; {
     avatar: &#x27;https://randomuser.me/api/portraits/men/10.jpg&#x27;,
-    name: &#x27;Juan Pérez&#x27;,
-    email: &#x27;demo@feedbapp.cl&#x27;,
-    username: &#x27;@juan.perez&#x27;,
+    name: &#x27;&#x27;,
+    email: &#x27;&#x27;,
     rating: 4,
     memberSince: &#x27;2024&#x27;,
-    bio: &#x27;Me gusta la tecnología y la música. Soy fanático de los videojuegos y me encanta la comida italiana. 🎮🍕&#x27;,
+    bio: &#x27;&#x27;,
   };
 
-  feedbackList &#x3D; [
-    {
-      id: 1,
-      user: &#x27;Carlos Martínez&#x27;,
-      avatar: &#x27;https://randomuser.me/api/portraits/men/32.jpg&#x27;,
-      comment:
-        &#x27;La calidad del producto superó mis expectativas. Excelente atención y rapidez en la entrega.&#x27;,
-      rating: 5,
-      date: &#x27;02/11/2024&#x27;,
-    },
-    // ... más feedbacks
-  ];
+  feedbackList: any[] &#x3D; [];
+  loading &#x3D; true;
 
-  reportFeedback(id: number) {
-    alert(&#x60;Feedback con ID ${id} reportado.&#x60;);
+  async ngOnInit() {
+    const userId &#x3D; this.route.snapshot.paramMap.get(&#x27;id&#x27;) || &#x27;&#x27;;
+    try {
+      const [userData, feedbackData] &#x3D; await Promise.all([
+        firstValueFrom(this.feedbackService.getUser(userId)),
+        firstValueFrom(this.feedbackService.getFeedbacks(userId)),
+      ]);
+
+      this.user &#x3D; { ...this.user, ...userData };
+      this.feedbackList &#x3D; feedbackData;
+    } catch (error) {
+      console.error(&#x27;Error fetching user or feedback data:&#x27;, error);
+    } finally {
+      this.loading &#x3D; false;
+    }
   }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container mt-4&quot;&gt;
-  &lt;div class&#x3D;&quot;row&quot;&gt;
-    &lt;h2 class&#x3D;&quot;mb-4&quot;&gt;Mi Perfil Feedbapp&lt;/h2&gt;
-    &lt;div class&#x3D;&quot;col-3&quot;&gt;
-      &lt;!-- Información del Usuario --&gt;
-      &lt;div class&#x3D;&quot;card shadow-sm mb-2&quot;&gt;
-        &lt;div class&#x3D;&quot;card-body text-center&quot;&gt;
-          &lt;!-- Foto del Usuario --&gt;
-          &lt;img
-            [src]&#x3D;&quot;user.avatar&quot;
-            alt&#x3D;&quot;Avatar&quot;
-            class&#x3D;&quot;rounded-circle mb-3&quot;
-            width&#x3D;&quot;120&quot;
-            height&#x3D;&quot;120&quot; /&gt;
-          &lt;!-- Nombre de Usuario y Correo --&gt;
-          &lt;h4 class&#x3D;&quot;mb-1&quot;&gt;{{ user.name }}&lt;/h4&gt;
-          &lt;div&gt;
-            &lt;i class&#x3D;&quot;fa fa-envelope&quot;&gt;&lt;/i&gt;
-            {{ user.email }}
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;d-flex&quot;&gt;
+  &lt;!-- Main content --&gt;
+  &lt;div class&#x3D;&quot;flex-grow-1&quot;&gt;
+    &lt;!-- Header --&gt;
+    &lt;header class&#x3D;&quot;p-3 border-bottom small text-white text-center fw-bold bg-primary bg-gradient&quot;&gt;
+      Perfil creado con feedb.app
+    &lt;/header&gt;
+
+    &lt;main class&#x3D;&quot;p-3&quot;&gt;
+      &lt;div class&#x3D;&quot;container mt-4&quot;&gt;
+        &lt;div *ngIf&#x3D;&quot;loading&quot; class&#x3D;&quot;text-center&quot;&gt;
+          &lt;div class&#x3D;&quot;spinner-border text-primary&quot; role&#x3D;&quot;status&quot;&gt;
+            &lt;span class&#x3D;&quot;visually-hidden&quot;&gt;Cargando...&lt;/span&gt;
           &lt;/div&gt;
-          &lt;p class&#x3D;&quot;text-muted&quot;&gt;{{ user.username }}&lt;/p&gt;
-          &lt;a class&#x3D;&quot;btn btn-primary btn-sm&quot; routerLink&#x3D;&quot;/feedback/config&quot;&gt;Editar Perfil&lt;/a&gt;
         &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class&#x3D;&quot;text-center&quot;&gt;
-        &lt;a class&#x3D;&quot;btn btn-outline-primary&quot; routerLink&#x3D;&quot;/public/profile&quot;&gt;Ver tu Perfil&lt;/a&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;col-9&quot;&gt;
-      &lt;!-- Previsualización del Perfil --&gt;
-      &lt;div class&#x3D;&quot;card shadow-sm&quot;&gt;
-        &lt;div class&#x3D;&quot;card-body&quot;&gt;
-          &lt;h5 class&#x3D;&quot;card-title text-center mb-4&quot;&gt;Previsualización de mi Perfil&lt;/h5&gt;
-
-          &lt;div class&#x3D;&quot;d-flex align-items-center mb-3&quot;&gt;
-            &lt;img
-              [src]&#x3D;&quot;user.avatar&quot;
-              alt&#x3D;&quot;Avatar&quot;
-              class&#x3D;&quot;rounded-circle me-3&quot;
-              width&#x3D;&quot;60&quot;
-              height&#x3D;&quot;60&quot; /&gt;
-            &lt;div&gt;
-              &lt;div class&#x3D;&quot;float-end fw-bold small&quot;&gt;Puntuación ({{ user.rating }})&lt;/div&gt;
-
-              &lt;h5 class&#x3D;&quot;mb-0&quot;&gt;{{ user.name }}&lt;/h5&gt;
-              &lt;small class&#x3D;&quot;text-muted&quot;&gt;Miembro desde {{ user.memberSince }}&lt;/small&gt;
-              &lt;p&gt;{{ user.bio }}&lt;/p&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-
-          &lt;!-- Información de Feedback --&gt;
-          &lt;hr /&gt;
-          &lt;div class&#x3D;&quot;row&quot;&gt;
-            @for(feedback of feedbackList; track $index) {
-            &lt;div class&#x3D;&quot;col-12 mb-3&quot;&gt;
-              &lt;div class&#x3D;&quot;card shadow-sm border-primary&quot;&gt;
-                &lt;div class&#x3D;&quot;card-body&quot;&gt;
-                  &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
-                    &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
-                      &lt;img
-                        [src]&#x3D;&quot;feedback.avatar&quot;
-                        alt&#x3D;&quot;Avatar&quot;
-                        class&#x3D;&quot;rounded-circle me-3&quot;
-                        width&#x3D;&quot;50&quot;
-                        height&#x3D;&quot;50&quot; /&gt;
-                      &lt;div&gt;
-                        &lt;h5 class&#x3D;&quot;mb-0&quot;&gt;{{ feedback.user }}&lt;/h5&gt;
-                        &lt;small class&#x3D;&quot;text-muted&quot;&gt;{{ feedback.date }}&lt;/small&gt;
-                      &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;button
-                      class&#x3D;&quot;btn btn-outline-danger btn-sm&quot;
-                      (click)&#x3D;&quot;reportFeedback(feedback.id)&quot;&gt;
-                      Reportar Feedback
-                    &lt;/button&gt;
+        &lt;div *ngIf&#x3D;&quot;!loading&quot; class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-12&quot;&gt;
+            &lt;div class&#x3D;&quot;d-flex align-items-center mb-3&quot;&gt;
+              &lt;img
+                [src]&#x3D;&quot;user.avatar&quot;
+                alt&#x3D;&quot;Avatar&quot;
+                class&#x3D;&quot;rounded-circle me-3&quot;
+                width&#x3D;&quot;180&quot;
+                height&#x3D;&quot;180&quot; /&gt;
+              &lt;div class&#x3D;&quot;w-100&quot;&gt;
+                &lt;div class&#x3D;&quot;float-end fw-bold small&quot;&gt;
+                  Puntuación ({{ user.rating }})
+                  &lt;div&gt;
+                    &lt;ng-container *ngFor&#x3D;&quot;let star of [1, 2, 3, 4, 5]; let i &#x3D; index&quot;&gt;
+                      &lt;i
+                        class&#x3D;&quot;fas&quot;
+                        [ngClass]&#x3D;&quot;{
+                          &#x27;fa-star text-warning&#x27;: star &lt;&#x3D; user.rating,
+                          &#x27;fa-star text-muted&#x27;: star &gt; user.rating
+                        }&quot;&gt;&lt;/i&gt;
+                    &lt;/ng-container&gt;
                   &lt;/div&gt;
+                &lt;/div&gt;
 
-                  &lt;p class&#x3D;&quot;mt-3&quot;&gt;{{ feedback.comment }}&lt;/p&gt;
-
-                  &lt;div class&#x3D;&quot;feedback-rating&quot;&gt;
-                    Puntuación:
-                    &lt;span class&#x3D;&quot;ms-2&quot;&gt;{{ feedback.rating }}.0&lt;/span&gt;
-                  &lt;/div&gt;
+                &lt;h4 class&#x3D;&quot;mb-0&quot;&gt;{{ user.name }}&lt;/h4&gt;
+                &lt;small class&#x3D;&quot;text-muted&quot;&gt;Miembro desde {{ user.memberSince }}&lt;/small&gt;
+                &lt;p&gt;{{ user.bio }}&lt;/p&gt;
+                &lt;div&gt;
+                  &lt;a [routerLink]&#x3D;&quot;&#x27;/public/form/&#x27; + user.email&quot; class&#x3D;&quot;btn btn-primary me-2&quot;&gt;
+                    Dale un feedback
+                    &lt;i class&#x3D;&quot;fa fa-rocket&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a routerLink&#x3D;&quot;#&quot; class&#x3D;&quot;btn btn-outline-primary&quot;&gt;Seguir&lt;/a&gt;
                 &lt;/div&gt;
               &lt;/div&gt;
             &lt;/div&gt;
-            }
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-12&quot;&gt;
+            &lt;hr /&gt;
+            &lt;!-- Previsualización del Perfil --&gt;
+            &lt;div class&#x3D;&quot;card shadow-sm&quot;&gt;
+              &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                &lt;h5 class&#x3D;&quot;card-title text-center mb-4&quot;&gt;Feeds recibidos&lt;/h5&gt;
+                @if(feedbackList.length &#x3D;&#x3D;&#x3D; 0) {
+                &lt;div class&#x3D;&quot;text-center&quot;&gt;
+                  &lt;p class&#x3D;&quot;text-muted&quot;&gt;No hay feedbacks para mostrar&lt;/p&gt;
+                &lt;/div&gt;
+                }
+                &lt;div class&#x3D;&quot;row&quot;&gt;
+                  &lt;ng-container *ngFor&#x3D;&quot;let feedback of feedbackList; let i &#x3D; index&quot;&gt;
+                    &lt;div class&#x3D;&quot;col-12 col-md-6 col-lg-4 mb-3&quot;&gt;
+                      &lt;div class&#x3D;&quot;card shadow-sm&quot;&gt;
+                        &lt;div class&#x3D;&quot;card-body&quot;&gt;
+                          &lt;div class&#x3D;&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                            &lt;div class&#x3D;&quot;d-flex align-items-center&quot;&gt;
+                              &lt;!-- &lt;img
+                                [src]&#x3D;&quot;feedback.avatar&quot;
+                                alt&#x3D;&quot;Avatar&quot;
+                                class&#x3D;&quot;rounded-circle me-3&quot;
+                                width&#x3D;&quot;50&quot;
+                                height&#x3D;&quot;50&quot; /&gt; --&gt;
+                              &lt;div&gt;
+                                &lt;h5 class&#x3D;&quot;mb-0&quot;&gt;{{ feedback.givenBy }}&lt;/h5&gt;
+                                &lt;small class&#x3D;&quot;text-muted&quot;&gt;{{ feedback.createdAt }}&lt;/small&gt;
+                              &lt;/div&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+
+                          &lt;p class&#x3D;&quot;mt-3&quot;&gt;{{ feedback.content }}&lt;/p&gt;
+
+                          &lt;div class&#x3D;&quot;feedback-rating&quot;&gt;
+                            &lt;ng-container *ngFor&#x3D;&quot;let star of [1, 2, 3, 4, 5]; let i &#x3D; index&quot;&gt;
+                              &lt;i
+                                class&#x3D;&quot;fas&quot;
+                                [ngClass]&#x3D;&quot;{
+                                  &#x27;fa-star text-warning&#x27;: star &lt;&#x3D; feedback.rating,
+                                  &#x27;fa-star text-muted&#x27;: star &gt; feedback.rating
+                                }&quot;&gt;&lt;/i&gt;
+                            &lt;/ng-container&gt;
+                            &lt;span class&#x3D;&quot;ms-2&quot;&gt;{{ feedback.rating }}.0&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/ng-container&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-    &lt;/div&gt;
+      &lt;div
+        class&#x3D;&quot;w-100 text-center d-flex align-items-center justify-content-center p-3 gap-2 small&quot;&gt;
+        Perfil creado en
+        &lt;img
+          src&#x3D;&quot;https://www.mods.cl/propuestas/feedbapp/images/feedbapp-logo.png&quot;
+          alt&#x3D;&quot;Feedbapp&quot;
+          width&#x3D;&quot;80&quot; /&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -559,7 +642,7 @@ export class ProfileComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container mt-4">  <div class="row">    <h2 class="mb-4">Mi Perfil Feedbapp</h2>    <div class="col-3">      <!-- Información del Usuario -->      <div class="card shadow-sm mb-2">        <div class="card-body text-center">          <!-- Foto del Usuario -->          <img            [src]="user.avatar"            alt="Avatar"            class="rounded-circle mb-3"            width="120"            height="120" />          <!-- Nombre de Usuario y Correo -->          <h4 class="mb-1">{{ user.name }}</h4>          <div>            <i class="fa fa-envelope"></i>            {{ user.email }}          </div>          <p class="text-muted">{{ user.username }}</p>          <a class="btn btn-primary btn-sm" routerLink="/feedback/config">Editar Perfil</a>        </div>      </div>      <div class="text-center">        <a class="btn btn-outline-primary" routerLink="/public/profile">Ver tu Perfil</a>      </div>    </div>    <div class="col-9">      <!-- Previsualización del Perfil -->      <div class="card shadow-sm">        <div class="card-body">          <h5 class="card-title text-center mb-4">Previsualización de mi Perfil</h5>          <div class="d-flex align-items-center mb-3">            <img              [src]="user.avatar"              alt="Avatar"              class="rounded-circle me-3"              width="60"              height="60" />            <div>              <div class="float-end fw-bold small">Puntuación ({{ user.rating }})</div>              <h5 class="mb-0">{{ user.name }}</h5>              <small class="text-muted">Miembro desde {{ user.memberSince }}</small>              <p>{{ user.bio }}</p>            </div>          </div>          <!-- Información de Feedback -->          <hr />          <div class="row">            @for(feedback of feedbackList; track $index) {            <div class="col-12 mb-3">              <div class="card shadow-sm border-primary">                <div class="card-body">                  <div class="d-flex justify-content-between align-items-center">                    <div class="d-flex align-items-center">                      <img                        [src]="feedback.avatar"                        alt="Avatar"                        class="rounded-circle me-3"                        width="50"                        height="50" />                      <div>                        <h5 class="mb-0">{{ feedback.user }}</h5>                        <small class="text-muted">{{ feedback.date }}</small>                      </div>                    </div>                    <button                      class="btn btn-outline-danger btn-sm"                      (click)="reportFeedback(feedback.id)">                      Reportar Feedback                    </button>                  </div>                  <p class="mt-3">{{ feedback.comment }}</p>                  <div class="feedback-rating">                    Puntuación:                    <span class="ms-2">{{ feedback.rating }}.0</span>                  </div>                </div>              </div>            </div>            }          </div>        </div>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex">  <!-- Main content -->  <div class="flex-grow-1">    <!-- Header -->    <header class="p-3 border-bottom small text-white text-center fw-bold bg-primary bg-gradient">      Perfil creado con feedb.app    </header>    <main class="p-3">      <div class="container mt-4">        <div *ngIf="loading" class="text-center">          <div class="spinner-border text-primary" role="status">            <span class="visually-hidden">Cargando...</span>          </div>        </div>        <div *ngIf="!loading" class="row">          <div class="col-12">            <div class="d-flex align-items-center mb-3">              <img                [src]="user.avatar"                alt="Avatar"                class="rounded-circle me-3"                width="180"                height="180" />              <div class="w-100">                <div class="float-end fw-bold small">                  Puntuación ({{ user.rating }})                  <div>                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">                      <i                        class="fas"                        [ngClass]="{                          \'fa-star text-warning\': star <= user.rating,                          \'fa-star text-muted\': star > user.rating                        }"></i>                    </ng-container>                  </div>                </div>                <h4 class="mb-0">{{ user.name }}</h4>                <small class="text-muted">Miembro desde {{ user.memberSince }}</small>                <p>{{ user.bio }}</p>                <div>                  <a [routerLink]="\'/public/form/\' + user.email" class="btn btn-primary me-2">                    Dale un feedback                    <i class="fa fa-rocket"></i>                  </a>                  <a routerLink="#" class="btn btn-outline-primary">Seguir</a>                </div>              </div>            </div>          </div>          <div class="col-12">            <hr />            <!-- Previsualización del Perfil -->            <div class="card shadow-sm">              <div class="card-body">                <h5 class="card-title text-center mb-4">Feeds recibidos</h5>                @if(feedbackList.length === 0) {                <div class="text-center">                  <p class="text-muted">No hay feedbacks para mostrar</p>                </div>                }                <div class="row">                  <ng-container *ngFor="let feedback of feedbackList; let i = index">                    <div class="col-12 col-md-6 col-lg-4 mb-3">                      <div class="card shadow-sm">                        <div class="card-body">                          <div class="d-flex justify-content-between align-items-center">                            <div class="d-flex align-items-center">                              <!-- <img                                [src]="feedback.avatar"                                alt="Avatar"                                class="rounded-circle me-3"                                width="50"                                height="50" /> -->                              <div>                                <h5 class="mb-0">{{ feedback.givenBy }}</h5>                                <small class="text-muted">{{ feedback.createdAt }}</small>                              </div>                            </div>                          </div>                          <p class="mt-3">{{ feedback.content }}</p>                          <div class="feedback-rating">                            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">                              <i                                class="fas"                                [ngClass]="{                                  \'fa-star text-warning\': star <= feedback.rating,                                  \'fa-star text-muted\': star > feedback.rating                                }"></i>                            </ng-container>                            <span class="ms-2">{{ feedback.rating }}.0</span>                          </div>                        </div>                      </div>                    </div>                  </ng-container>                </div>              </div>            </div>          </div>        </div>      </div>      <div        class="w-100 text-center d-flex align-items-center justify-content-center p-3 gap-2 small">        Perfil creado en        <img          src="https://www.mods.cl/propuestas/feedbapp/images/feedbapp-logo.png"          alt="Feedbapp"          width="80" />      </div>    </main>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfigComponent', 'selector': 'app-config'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'HistoryComponent', 'selector': 'app-history'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ShellComponent', 'selector': 'app-shell'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProfileComponent-1'};

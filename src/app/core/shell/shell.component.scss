@@ -102,7 +102,7 @@ header .badge {
   height: 100vh;
   z-index: 999;
   overflow-y: auto;
-  width: 250px;
+  // width: 250px;
 
   &.active {
     transform: translateX(0);
@@ -119,6 +119,6 @@ header .badge {
   transition: margin-left 0.3s ease-in-out;
 
   @media (min-width: 768px) {
-    margin-left: 250px; // Deja espacio para el sidebar en pantallas grandes
+    // margin-left: 250px; // Deja espacio para el sidebar en pantallas grandes
   }
 }

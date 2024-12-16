@@ -144,8 +144,21 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   providers: [
+    provideHttpClient(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withViewTransitions()),
+    provideFirebaseApp(() &#x3D;&gt;
+      initializeApp({
+        projectId: &#x27;feedbapp-cl&#x27;,
+        appId: &#x27;1:338386821517:web:1a8d83d50edce40fb4ddc4&#x27;,
+        storageBucket: &#x27;feedbapp-cl.firebasestorage.app&#x27;,
+        apiKey: &#x27;AIzaSyAv79dtKyI4Glaj7O4OQBbLUHmYA5bsZRU&#x27;,
+        authDomain: &#x27;feedbapp-cl.firebaseapp.com&#x27;,
+        messagingSenderId: &#x27;338386821517&#x27;,
+        measurementId: &#x27;G-F2DVZ9NF2X&#x27;,
+      })
+    ),
+    provideAuth(() &#x3D;&gt; getAuth()),
   ],
 }</code>
                     </td>
